@@ -1,0 +1,25 @@
+﻿{
+
+	// Telegram Bot API token (see https://telegrambots.github.io/book/1/quickstart.html)
+	"telegram-bot-api-token": "",
+
+	// QuantConnect API details (see https://www.quantconnect.com/account)
+	"quantconnect-job-user-id": "",
+	"quantconnect-api-access-token": "",
+
+	// Oanda API details (see https://www.oanda.com/account/tpa/personal_token)
+	"oanda-api-token": "",
+	"oanda-account-id": "",
+	"oanda-account-mode": "",		// trade or practice
+
+	// QuantConnect project and deployment details (see https://quantconnect.com/terminal/)
+	"quantconnect-project-id": "",
+	"quantconnect-deployment-id": "",
+
+	// List of Telegram @usernames of authenticated users
+	"authed-users": [
+		"",
+		""
+	],
+
+}
