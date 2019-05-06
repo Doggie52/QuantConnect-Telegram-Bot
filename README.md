@@ -20,4 +20,4 @@ Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm d
 1. `nuget restore QuantConnect-Telegram-Bot.sln`
 1. `xbuild QuantConnect-Telegram-Bot.sln`
 1. `cd QuantConnect-Telegram-Bot/bin/Debug`
-1. `mono ./QuantConnect-Telegram-Bot.exe`
+1. `mono ./QuantConnect-Telegram-Bot.exe` or `nohup mono ./QuantConnect-Telegram-Bot.exe &` to run in background
