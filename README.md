@@ -7,6 +7,7 @@ Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm d
 ### Requirements
 
  * Windows or *NIX instance
+ * (if Windows) Visual Studio 2017
  * QuantConnect account and API key
  * Oanda account and API key
  * Telegram account and Bot API token
