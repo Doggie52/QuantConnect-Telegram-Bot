@@ -178,12 +178,19 @@ namespace QuantConnectTelegramBot
 							);
 							break;
 
-						// Get certain bits of account data
-						case "/get":
-							var query = e.Message.Text.Split( ' ' );
+						// Get Oanda data
+						case "/get_oanda":
 							await _botClient.SendTextMessageAsync(
 								chatId: e.Message.Chat,
-								text: GetAccountData( query.Last().ToLower() == "/get" ? "undefined" : query.Last().ToLower() ),
+								text: GetAccountData( "oanda-summary" ) + "\n_Current positions_\n" + GetAccountData( "oanda-positions" ),
+								parseMode: ParseMode.Markdown
+							);
+							break;
+
+						case "/get_qc":
+							await _botClient.SendTextMessageAsync(
+								chatId: e.Message.Chat,
+								text: GetAccountData( "qc-nav" ),
 								parseMode: ParseMode.Markdown
 							);
 							break;
