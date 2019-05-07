@@ -125,14 +125,16 @@ namespace QuantConnectTelegramBot
 			else
 				Log( "QuantConnect API connection successful." );
 
-			// Connect to Oanda API
-			try {
-				Log( "Connecting to Oanda API." );
-				Credentials.SetCredentials( _oandaAccountMode, _oandaApiToken, _oandaAccountId );
-				Log( "Oanda API connection successful." );
-			} catch ( Exception e ) {
-				Log( $"Oanda API connection unsuccessful. Exception: {e.Message}" );
-				throw e;
+			// Connect to Oanda API if token provided
+			if ( _oandaApiToken != "" ) {
+				try {
+					Log( "Connecting to Oanda API." );
+					Credentials.SetCredentials( _oandaAccountMode, _oandaApiToken, _oandaAccountId );
+					Log( "Oanda API connection successful." );
+				} catch ( Exception e ) {
+					Log( $"Oanda API connection unsuccessful. Exception: {e.Message}" );
+					throw e;
+				}
 			}
 
 			// Bind message handler
@@ -164,7 +166,7 @@ namespace QuantConnectTelegramBot
 						case "/start":
 							await _botClient.SendTextMessageAsync(
 								chatId: e.Message.Chat,
-								text: $"Welcome! Bot is connected to QuantConnect account `{_qcJobUserId}` and Oanda account `{_oandaAccountId}`.",
+								text: $"Welcome! Bot is connected to QuantConnect account `{_qcJobUserId}`" + ( _oandaApiToken != "" ? $" and Oanda {_oandaAccountMode.ToString().ToLower()} account `{_oandaAccountId}`." : "." ),
 								parseMode: ParseMode.Markdown
 							);
 							break;
