@@ -1,6 +1,6 @@
 # QuantConnect Telegram Bot
 
-Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm deployment. Currently requires/supports Oanda accounts.
+Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm deployment. Supports Oanda accounts.
 
 ## Getting Started
 
