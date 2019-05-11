@@ -2,7 +2,7 @@
 
 Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm deployment. Supports Oanda accounts.
 
-## Commands/features
+## Commands/Features
 
  * `/get_qc`: Gets the current $ NAV from a QuantConnect deployment.
  * `/get_oanda`: Gets a detailed account summary from an Oanda account, including:
