@@ -86,12 +86,13 @@ namespace QuantConnectTelegramBot
 		/// <summary>
 		/// Gets the culture info for the QuantConnect response.
 		/// </summary>
+		/// <remarks>Defaults to `en-US` until accounts with different currencies are supported.</remarks>
 		private static readonly CultureInfo _qcCI = new CultureInfo( "en-US" );
 
 		/// <summary>
-		/// Gets the culture info for the Oanda response.
+		/// Gets or sets the culture info for the Oanda response.
 		/// </summary>
-		private static readonly CultureInfo _oandaCI = new CultureInfo( "en-GB" );
+		private static CultureInfo _oandaCI;
 
 		/// <summary>
 		/// Main erntry point.
@@ -130,7 +131,7 @@ namespace QuantConnectTelegramBot
 				try {
 					Log( "Connecting to Oanda API." );
 					Credentials.SetCredentials( _oandaAccountMode, _oandaApiToken, _oandaAccountId );
-					Log( "Oanda API connection successful." );
+					Log( $"Oanda API connection successful. CultureInfo: {_oandaCI.Name}." );
 				} catch ( Exception e ) {
 					Log( $"Oanda API connection unsuccessful. Exception: {e.Message}" );
 					throw e;
@@ -323,6 +324,7 @@ namespace QuantConnectTelegramBot
 							EEnvironment.Practice :
 							throw new Exception( "Invalid Oanda account mode." )
 					);
+				_oandaCI = new CultureInfo( config["oanda-cultureinfo"].ToString() );
 
 				_authedUsers = config["authed-users"].ToObject<List<string>>();
 

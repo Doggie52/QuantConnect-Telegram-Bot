@@ -12,6 +12,9 @@
 	"oanda-account-id": "",
 	"oanda-account-mode": "",		// trade or practice
 
+	// CultureInfo name corresponding to Oanda account's currency
+	"oanda-cultureinfo": "",
+
 	// QuantConnect project and deployment details (see https://quantconnect.com/terminal/)
 	"quantconnect-project-id": "",
 	"quantconnect-deployment-id": "",
