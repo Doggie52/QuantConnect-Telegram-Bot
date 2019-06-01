@@ -52,5 +52,5 @@ If you want to run the process in the background and have it restart automatical
 1. Build a Docker image. Example for Google Cloud deployment:
    1. `gcloud auth login`, follow steps
    1. `gcloud config set project [PROJECT_ID]`
-   1. `gcloud builds submit --tag gcr.io/[PROJECT_ID]/docker-images .`
+   1. `gcloud builds submit --tag gcr.io/[PROJECT_ID]/quantconnect-telegram-bot .`
 1. Run or deploy image as you see fit.
