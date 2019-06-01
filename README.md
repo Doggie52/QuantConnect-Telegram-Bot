@@ -36,8 +36,8 @@ Unofficial Telegram bot for retrieving data from a QuantConnect live algorithm d
 1. Clone into directory of choice, `cd` into this directory.
 1. Fill out the [`bot-config.json`](https://github.com/Doggie52/QuantConnect-Telegram-Bot/blob/master/QuantConnect-Telegram-Bot/bot-config.json) file.
 1. `nuget restore QuantConnect-Telegram-Bot.sln`
-1. `msuild QuantConnect-Telegram-Bot.sln`
-1. `cd QuantConnect-Telegram-Bot/bin/Debug`
+1. `msbuild QuantConnect-Telegram-Bot.sln /p:Configuration=Release`
+1. `cd QuantConnect-Telegram-Bot/bin/Release`
 1. `mono ./QuantConnect-Telegram-Bot.exe`
 
 If you want to run the process in the background and have it restart automatically if it crashes, replace the last two steps above with the following:
