@@ -1,8 +1,7 @@
 ﻿FROM mono:latest
 
 # Stage 0: Get prerequisites
-RUN \
-	apt-get update && apt-get --yes install unzip wget nuget msbuild
+RUN apt-get update && apt-get --yes install unzip wget nuget msbuild
 
 # Stage 1: Download the project
 RUN \
@@ -21,8 +20,5 @@ RUN \
 COPY QuantConnect-Telegram-Bot/bot-config.json QuantConnect-Telegram-Bot/bin/Release/bot-config.json
 RUN cat QuantConnect-Telegram-Bot/bin/Release/bot-config.json
 
-# Stage 4: Run the project
+# Stage 4: Run the project on deploy
 CMD cd QuantConnect-Telegram-Bot/bin/Release && mono ./QuantConnect-Telegram-Bot.exe
-#RUN \
-#	chmod +x ./monitor.sh && \
-#	nohup ./monitor.sh &
