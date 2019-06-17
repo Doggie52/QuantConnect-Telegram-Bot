@@ -7,10 +7,10 @@
 	"quantconnect-job-user-id": "",
 	"quantconnect-api-access-token": "",
 
+	// OANDA API details (see https://www.oanda.com/account/tpa/personal_token)
 	"oanda-api-token": "",
 	"oanda-account-id": "",
 	"oanda-account-mode": "",		// trade or practice
-    // OANDA API details (see https://www.oanda.com/account/tpa/personal_token)
 
 	// CultureInfo name corresponding to Oanda account's currency
 	"oanda-cultureinfo": "",
