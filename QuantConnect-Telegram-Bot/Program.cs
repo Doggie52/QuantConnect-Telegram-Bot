@@ -54,17 +54,17 @@ namespace QuantConnectTelegramBot
 		private static string _qcDeploymentId;
 
 		/// <summary>
-		/// Gets or sets the Oanda API token.
+		/// Gets or sets the OANDA API token.
 		/// </summary>
 		private static string _oandaApiToken;
 
 		/// <summary>
-		/// Gets or sets the Oanda account ID.
+		/// Gets or sets the OANDA account ID.
 		/// </summary>
 		private static string _oandaAccountId;
 
 		/// <summary>
-		/// Gets or sets the Oanda account mode (trade or practice).
+		/// Gets or sets the OANDA account mode (trade or practice).
 		/// </summary>
 		private static EEnvironment _oandaAccountMode;
 
@@ -90,7 +90,7 @@ namespace QuantConnectTelegramBot
 		private static readonly CultureInfo _qcCI = new CultureInfo( "en-US" );
 
 		/// <summary>
-		/// Gets or sets the culture info for the Oanda response.
+		/// Gets or sets the culture info for the OANDA response.
 		/// </summary>
 		private static CultureInfo _oandaCI;
 
@@ -126,14 +126,14 @@ namespace QuantConnectTelegramBot
 			else
 				Log( "QuantConnect API connection successful." );
 
-			// Connect to Oanda API if token provided
+			// Connect to OANDA API if token provided
 			if ( _oandaApiToken != "" ) {
 				try {
-					Log( "Connecting to Oanda API." );
+					Log( "Connecting to OANDA API." );
 					Credentials.SetCredentials( _oandaAccountMode, _oandaApiToken, _oandaAccountId );
-					Log( $"Oanda API connection successful. CultureInfo: {_oandaCI.Name}." );
+					Log( $"OANDA API connection successful. CultureInfo: {_oandaCI.Name}." );
 				} catch ( Exception e ) {
-					Log( $"Oanda API connection unsuccessful. Exception: {e.Message}" );
+					Log( $"OANDA API connection unsuccessful. Exception: {e.Message}" );
 					throw e;
 				}
 			}
@@ -167,7 +167,7 @@ namespace QuantConnectTelegramBot
 						case "/start":
 							await _botClient.SendTextMessageAsync(
 								chatId: e.Message.Chat,
-								text: $"Welcome! Bot is connected to QuantConnect account `{_qcJobUserId}`" + ( _oandaApiToken != "" ? $" and Oanda {_oandaAccountMode.ToString().ToLower()} account `{_oandaAccountId}`." : "." ),
+								text: $"Welcome! Bot is connected to QuantConnect account `{_qcJobUserId}`" + ( _oandaApiToken != "" ? $" and OANDA {_oandaAccountMode.ToString().ToLower()} account `{_oandaAccountId}`." : "." ),
 								parseMode: ParseMode.Markdown
 							);
 							break;
@@ -181,7 +181,7 @@ namespace QuantConnectTelegramBot
 							);
 							break;
 
-						// Get Oanda data
+						// Get OANDA data
 						case "/get_oanda":
 							await _botClient.SendTextMessageAsync(
 								chatId: e.Message.Chat,
@@ -224,12 +224,12 @@ namespace QuantConnectTelegramBot
 			try {
 				switch ( desiredData ) {
 
-					// Summary of Oanda account
+					// Summary of OANDA account
 					case "oanda-summary":
 						// Get the account summary
 						AccountSummary accountSummary = GetAccountSummaryAsync( _oandaAccountId ).Result;
 
-						return $"*Oanda account summary*\n" +
+						return $"*OANDA account summary*\n" +
 							$"NAV: {accountSummary.NAV.ToString( "C2", _oandaCI )}\n" +
 							$"Unrealised P&L: {accountSummary.unrealizedPL.ToString( "C2", _oandaCI )}\n" +
 							$"Realised P&L: {accountSummary.pl.ToString( "C2", _oandaCI )}\n" +
@@ -315,14 +315,14 @@ namespace QuantConnectTelegramBot
 				_qcProjectId = config["quantconnect-project-id"].ToObject<int>();
 				_qcDeploymentId = config["quantconnect-deployment-id"].ToString();
 
-				// Oanda
+				// OANDA
 				_oandaApiToken = config["oanda-api-token"].ToString();
 				_oandaAccountId = config["oanda-account-id"].ToString();
 				_oandaAccountMode = config["oanda-account-mode"].ToString() == "trade" ?
 					EEnvironment.Trade :
 						( config["oanda-account-mode"].ToString() == "practice" ?
 							EEnvironment.Practice :
-							throw new Exception( "Invalid Oanda account mode." )
+							throw new Exception( "Invalid OANDA account mode." )
 					);
 				_oandaCI = new CultureInfo( config["oanda-cultureinfo"].ToString() );
 
